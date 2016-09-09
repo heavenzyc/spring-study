@@ -123,5 +123,11 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
+    <repositories>
+        <repository>
+            <id>spring.io</id>
+            <name>spring.io</name>
+            <url>https://repo.spring.io/libs-release</url>
+        </repository>
+    </repositories>
 </project>
