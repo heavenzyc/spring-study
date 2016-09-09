@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+        ">
+
+    <bean id="helloWorldService" class="com.heaven.spring.study.aop.HelloWorldService"/>
+    <bean id="aspect" class="com.heaven.spring.study.aop.HelloWorldAspect"/>
+    <aop:config>
+        <aop:pointcut id="pointcut" expression="execution(* com.heaven..*(..))"/>
+        <aop:aspect ref="aspect">
+            <aop:before pointcut-ref="pointcut"
+                        method="beforeAdvice"/>
+            <aop:after method="afterFinallyAdvice" pointcut="execution(* com.heaven..*.*(..))"/>
+            <aop:after-returning pointcut="execution(* com.heaven..*.sayAfterReturning())"
+                                 method="afterReturning" arg-names="reVal" returning="reVal"/>
+            <aop:before pointcut="execution(* com.heaven..*.sayHelloParam(..)) and args(params, age)"
+                        method="beforeAdvice(java.lang.String, java.lang.Integer)"
+                        arg-names="params, age"/>
+            <aop:after-throwing pointcut="execution(* com.heaven..*.sayAfterException())"
+                                method="afterException" arg-names="e" throwing="e"/>
+            <aop:around method="aroundAdvice" pointcut="execution(* com.heaven..*.sayAroundHello(..))"
+            arg-names="proceedingJoinPoint"/>
+            <aop:declare-parents types-matching="com.heaven..*.IHelloWorldService+"
+                                 implement-interface="com.heaven.spring.study.aop.IIntroduceService"
+                                 default-impl="com.heaven.spring.study.aop.IntroduceService"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>
