@@ -15,6 +15,7 @@
         <module>chapter4</module>
         <module>lucene</module>
         <module>es</module>
+        <module>redis</module>
     </modules>
 
     <properties>
