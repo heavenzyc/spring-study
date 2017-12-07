@@ -22,7 +22,7 @@ public class SmsAction {
         ISmsService demoServer = (ISmsService) context.getBean("smsService");
 
         List<String> phoneList = new ArrayList<String>();
-        phoneList.add("17760537165");
+        phoneList.add("1776053716");
         String params = "{\"smsCode\": \"2575\"}";
         PushDubboResult result = demoServer.sendSmsMsg(phoneList, params, "SMS_80375031", "test.com");
         System.out.println(JSON.toJSON(result));

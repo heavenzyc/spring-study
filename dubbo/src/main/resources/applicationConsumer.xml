@@ -13,11 +13,11 @@
 		url="dubbo://dubbo://10.12.194.67:18111"/>
 
 	<dubbo:reference id="gexinPushService" interface="com.fruit.push.api.gexin.IGexinPushService"
-					 url="dubbo://10.12.194.67:18131" check="false"/>
+					 url="dubbo://47.92.75.170:18131" check="false"/>
 
 	<dubbo:reference id="smsService" interface="com.fruit.push.api.sms.ISmsService"
-					 url="dubbo://10.12.194.67:18131" check="false"/>
+					 url="dubbo://47.92.75.170:18131" check="false"/>
 
 	<dubbo:reference id="wechatNotificationService" interface="com.fruit.push.api.wx.IWechatNotificationService"
-					 url="dubbo://10.12.194.67:18131" check="false"/>
+					 url="dubbo://47.92.75.170:18131" check="false"/>
 </beans>
