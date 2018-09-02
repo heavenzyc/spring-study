@@ -16,7 +16,6 @@
         <module>lucene</module>
         <module>es</module>
         <module>redis</module>
-        <module>dubbo</module>
     </modules>
 
     <properties>
